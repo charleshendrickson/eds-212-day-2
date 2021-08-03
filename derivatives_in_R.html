@@ -205,6 +205,21 @@ dg_dt</code></pre>
 <pre class="r"><code>t &lt;- 0
 eval(expr = dg_dt)</code></pre>
 <pre><code>## [1] -4</code></pre>
+<pre class="r"><code># Find the second derivative with respect to z for:
+
+# First find the first derivative 
+Gz &lt;- expression(4.6 - 1.9*z^3)
+
+dG_dz &lt;- D(expr = Gz, name = &#39;z&#39;)
+
+dG_dz</code></pre>
+<pre><code>## -(1.9 * (3 * z^2))</code></pre>
+<pre class="r"><code># Then find the second derivative 
+
+d2G_dz2 &lt;- D(expr = dG_dz, name = &#39;z&#39;)
+
+d2G_dz2</code></pre>
+<pre><code>## -(1.9 * (3 * (2 * z)))</code></pre>
 </div>
 
 
