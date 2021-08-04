@@ -69,8 +69,67 @@ d2G_dz2 <- D(expr = dG_dz, name = 'z')
 d2G_dz2
 ```
 
+```{r}
+# Find all partials of the following function:
+
+# First for x
+Fxyz <- expression(y*2*x^2 - 3*x + 1 + x*4*z^4)
+
+dF_dx <- D(expr = Fxyz, name = 'x')
+
+dF_dx
+
+# Then for y 
+
+dF_dy <- D(expr = Fxyz, name = 'y')
+
+dF_dy
+
+# Then for z
+
+dF_dz <- D(expr = Fxyz, name = 'z')
+
+dF_dz
+```
+
+```{r}
+# Section 4, create a plot of the function: 
+
+eq <- function(x) {sin(x)*2.4*exp(-0.05*x)}
+ggplot(data = data.frame(x = c(-0.5, 0.5)), aes(x = x)) +
+stat_function(fun = eq)
 
 
+```
+
+
+```{r}
+# Section 4, create a ggplot graph of penguin bill length versus bill depth
+
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c("red", "purple", "cyan")) +
+  labs(x = "Bill length (mm)",
+       y = "Bill depth (mm)",
+       title = "Palmer penguins bill size measurements",
+       caption = "Data collected by KB Gorman et al. at Palmer Station",
+       color = "Species") +
+  facet_wrap(~island) + 
+  theme_light()
+```
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c("red", "purple", "cyan")) +
+  labs(x = "Bill length (mm)",
+       y = "Bill depth (mm)",
+       title = "Palmer penguins bill size measurements",
+       caption = "Data collected by KB Gorman et al. at Palmer Station",
+       color = "Species") +
+  facet_wrap(~island) + 
+  theme_light()
+```
 
 
 
